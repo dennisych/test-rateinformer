@@ -1,0 +1,8 @@
+# Yii runtime folder
+runtime
+
+# Yii assets folder
+wwwroot/assets
+
+# Composer vendor folder
+vendor

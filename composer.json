@@ -1,0 +1,25 @@
+{
+    "name": "sychdv/rateinformer",
+    "description": "Currency rate service",
+    "autoload": {
+        "psr-4": {
+            "RateInformer\\Api\\": "api",
+            "RateInformer\\Cli\\": "cli"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.1.0",
+        "zircote/swagger-php": "^3.0"
+    }
+}

@@ -1,0 +1,156 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "RateInformer API",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/currencies": {
+            "get": {
+                "tags": [
+                    "Currencies"
+                ],
+                "summary": "Get currency rate list",
+                "operationId": "currency-list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number to display",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull currency rates list retreival",
+                        "headers": {
+                            "X-Pagination-Current-Page": {
+                                "description": "The number of returned page of the list",
+                                "schema": {
+                                    "type": "int"
+                                }
+                            },
+                            "X-Pagination-Page-Count": {
+                                "description": "Quantity of pages in the list",
+                                "schema": {
+                                    "type": "int"
+                                }
+                            },
+                            "X-Pagination-Per-Page": {
+                                "description": "Size of the list page",
+                                "schema": {
+                                    "type": "int"
+                                }
+                            },
+                            "X-Pagination-Total-Count": {
+                                "description": "Quantity of elements in the list",
+                                "schema": {
+                                    "type": "int"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "Возвращает список курсов валют.",
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "description": "Возвращает список курсов валют.",
+                                                "type": "string"
+                                            },
+                                            "rate": {
+                                                "description": "Возвращает список курсов валют.",
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [
+                            ""
+                        ]
+                    }
+                ]
+            }
+        },
+        "/currency/{id}": {
+            "get": {
+                "tags": [
+                    "Currencies"
+                ],
+                "summary": "Get currency rate",
+                "operationId": "users-list",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull currency rate retreival",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "Возвращает курс указанной валюты.",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "Возвращает курс указанной валюты.",
+                                            "type": "string"
+                                        },
+                                        "rate": {
+                                            "description": "Возвращает курс указанной валюты.",
+                                            "type": "number"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Currency not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [
+                            ""
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "token",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
